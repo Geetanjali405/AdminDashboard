@@ -2,35 +2,54 @@ import { Injectable } from '@angular/core';
 
 interface User {
   id: number;
-  title: string
+  title: string;
+  password?:string;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  // [x: string]: any;
-  users:Array<User>=[
-    {
-      id:1,
-      title:"person 1"
-    },
-    {
-      id:2,
-      title:"person 2"
-    },
-    {
-      id:3,
-      title:"person 3"
-    },
-    {
-      id:4,
-      title:"person 4"
-    },
-    {
-      id:5,
-      title:"person 5"
-    },
-  ]
-  constructor() { }
+  users: Array<User> = [];
+
+  localStorageKey: string = "user_data";
+
+  constructor() {
+     this.loadUsersFromLocalStorage(); 
+  }
+
+  private loadUsersFromLocalStorage() {
+    let userData = localStorage.getItem(this.localStorageKey); 
+    if (userData) { 
+      this.users = JSON.parse(userData); 
+    } else { 
+      this.users = []; 
+    }
+  }
+
+  createUser(user:User) {
+    user.id = this.users.length + 1;
+    this.users.push(user); 
+    this.saveUsersToLocalStorage();
+  }
+
+  getUsers(): User[] { 
+    return this.users; 
+  }
+
+  getUserById(id: number): User {
+    return this.users.find(user => user.id === id);
+  }
+
+  updateUser(user: User|any) {
+    let index = this.users.findIndex(u => u.id === user.id);
+    if (index !== -1) {
+      this.users[index] = user;
+      this.saveUsersToLocalStorage();
+    }
+  }
+
+  private saveUsersToLocalStorage() {
+    localStorage.setItem(this.localStorageKey, JSON.stringify(this.users));
+  }
 }

@@ -1,2 +1,9 @@
 <p>viewuser works!</p>
-<h1>{{currentUser?.title}}</h1> 
+<h1>{{currentUser?.title}}</h1>
+
+<div class="flex-column">
+        <a routerLink="/user/{{currentUser?.id}}/Edit" class="btn btn-primary mr-3">Edit User</a>
+        <!-- <a routerLink="/user/Create" class="btn btn-primary ml-3">Create</a> -->
+    </div>
+
+    

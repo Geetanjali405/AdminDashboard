@@ -28,4 +28,6 @@ export class ViewuserComponent {
       this.currentUser = this.UserService.users[UserIndex];
     });
   }
+
+  
 }

@@ -9,8 +9,13 @@ import { UsersComponent } from './users/users.component';
 import { ViewuserComponent } from './user/viewuser/viewuser.component';
 import { EdituserComponent } from './user/edituser/edituser.component';
 import { CreateuserComponent } from './user/createuser/createuser.component';
-
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { CreateproductComponent } from './createproduct/createproduct.component';
+import { ViewproductComponent } from './viewproduct/viewproduct.component';
 const routes: Routes = [
+  {path:"",component:DashboardComponent
+
+  },
   {
     path:"dashboard",
     component:DashboardComponent,
@@ -28,7 +33,19 @@ const routes: Routes = [
   },
   {
     path:"products",
-    component:ProdcardsComponent
+    component: ProdcardsComponent,
+    
+  },
+
+  {
+    path: "products/Create",
+    component: CreateproductComponent,
+    
+  },
+  {
+    path: "product/:id",
+    component: ViewproductComponent
+ 
   },
   {
     path:"user",
@@ -36,11 +53,18 @@ const routes: Routes = [
     children: [
       {path: "", component: UsersComponent},
       {path: "Edit", component: EdituserComponent},
-      {path: "Create", component: CreateuserComponent},
-      {path: ":id", component: ViewuserComponent}
+      { path: "Create", component: CreateuserComponent },
+      {path: ":id", component: ViewuserComponent},
+      {path: ":id/Edit", component: EdituserComponent},
+     
+      
       
     ]
-  }
+  },
+  // {
+  //   path: '**', 
+  //   component:DashboardComponent
+  // }
 ];
 
 @NgModule({

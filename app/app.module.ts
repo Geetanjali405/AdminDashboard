@@ -18,6 +18,10 @@ import { EditComponent } from './edit/edit.component';
 import { ViewuserComponent } from './user/viewuser/viewuser.component';
 import { EdituserComponent } from './user/edituser/edituser.component';
 import { CreateuserComponent } from './user/createuser/createuser.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { CreateproductComponent } from './createproduct/createproduct.component';
+import { ViewproductComponent } from './viewproduct/viewproduct.component';
 
 @NgModule({
   declarations: [
@@ -36,11 +40,16 @@ import { CreateuserComponent } from './user/createuser/createuser.component';
     EditComponent,
     ViewuserComponent,
     EdituserComponent,
-    CreateuserComponent
+    CreateuserComponent,
+    PagenotfoundComponent,
+    CreateproductComponent,
+    ViewproductComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
